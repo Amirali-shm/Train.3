@@ -10,7 +10,7 @@ import { addUser } from "./../../actions/user";
 import { decodeToken } from "./../../utils/decodeToken";
 import { isEmpty } from "lodash";
 
-const Login = ({ history }) => {
+const Loin = ({ history }) => {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
 

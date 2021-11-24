@@ -25,10 +25,10 @@ const slice = createSlice({
 
         tasksReceived: (tasks, action) => {
             console.log("tasks recieved");
-            tasks.list = action.payload.tasks;
+            tasks.list = action.payload;
             tasks.loading = false;
             tasks.lastFetch = Date.now();
-            console.log();
+            console.log(tasks.list);
         },
 
         tasksRequestFailed: (tasks, action) => {
@@ -65,7 +65,7 @@ export default slice.reducer;
 
 //loadtasks
 const url = "/admin/tasks";
-export const loadTasks = () => (dispatch, getState) => {
+export const loadTasks =  () => (dispatch, getState) => {
     console.log("came into loudTasks");
     const { lastFetch } = getState().entities.tasks;
 

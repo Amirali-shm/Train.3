@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import TaskBox from "../Task/TaskBox";
 import configureStore from "../../store/configureStore";
 import axios from "axios";
@@ -7,31 +7,39 @@ import Pin from "../Pin/Pin";
 import TaskBuilder from "./TaskBuilder";
 import PinBuilder from "./PinBuilder";
 import ImageBox from "../ImageBox/ImageBox";
+import { loadTasks } from "../../store/tasks";
 const Admin = () => {
-    return (
+    const store = configureStore();
 
-        <div dir="rtl">
-            <div class="content">
+    useEffect(() => {
+        store.dispatch(loadTasks());
 
-                <Header />
-                <TaskBox />
-                <ImageBox/>
+    },[]);
 
-                <div className="right groupbox">
-                    <TaskBuilder/>
-                    <PinBuilder/>
-                    
-                </div>
+ 
+return (
 
-                <div style={{ clear: 'both' }} ></div>
-                
-                <Pin />
+    <div dir="rtl">
+        <div class="content">
 
+            <Header />
+            <TaskBox />
+            <ImageBox />
 
-
+            <div className="right groupbox">
+                <TaskBuilder />
+                <PinBuilder />
             </div>
-        </div >
-    );
+
+            <div style={{ clear: 'both' }} ></div>
+
+            <Pin />
+
+
+
+        </div>
+    </div >
+);
 }
 
 export default Admin;

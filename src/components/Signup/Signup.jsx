@@ -103,12 +103,13 @@ const Signup = () => {
             </div>
 
             <div className="links">
-                <Link to="/Signup">
-                    <a href="#">ثبت نام</a>
-                </Link>
-                <Link to="/Login">
-                    <a href="#">ورود</a>
-                </Link>
+
+                
+                    <Link to="/Signup"> ثبت نام </Link>
+                    <Link to="/Login">  ورود </Link>
+
+                
+              
             </div>
 
 

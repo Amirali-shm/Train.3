@@ -2,7 +2,9 @@ import React, { useState, useRef } from "react";
 import SimpleReactValidator from "simple-react-validator";
 import configureStore from "../../store/configureStore";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router";
 const store = configureStore();
 
 const Login = () => {
@@ -10,7 +12,7 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
-
+    let history = useHistory();
     //user validation with "SimpleReactValidator" start
     const validator = useRef(
         new SimpleReactValidator({
@@ -33,27 +35,41 @@ const Login = () => {
     const login = async event => {
         event.preventDefault();
         const user = { email, password };
-        console.log(user)
+
 
         try {
             if (validator.current.allValid()) {
-                console.log("valid");
                 setLoading(true);
-                let status;
-                await axios.post("http://192.168.1.103:8080/api/auth/login", user).then((response) => {
-                    console.log(response);
+                let status; let role;
+                await axios.post("http://localhost:8080/api/auth/login", user).then((response) => {
+                    console.log("response");
                     status = response.status;
+                    role = response.data.role;
                 }).catch((error) => {
                     console.log(error);
                 });
 
                 if (status === 200) {
+                    console.log("you'r in");
+                    console.log(role);
+                    
+                    switch (role) {
+                        case "admin":
+                            history.push("/admin");
+                            break;
+                        case "user":
+                            history.push("/user");
+                            break;
+                        case "super admin":
+                            history.push("/admin");
+                            break;
+                        default:
+                            break;
+                    }
 
-
-                    console.log("what");
                     setLoading(false);
-
                     reset();
+
                 }
             } else {
                 validator.current.showMessages();
@@ -80,8 +96,9 @@ const Login = () => {
             </div>
 
             <div className="links">
-                <a href="./signup.html">ثبت نام</a>
-                <a href="./">ورود</a>
+
+                <Link to="/Signup"> ثبت نام </Link>
+                <Link to="/Login">  ورود </Link>
             </div>
 
 

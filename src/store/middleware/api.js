@@ -18,8 +18,8 @@ const api = ({ dispatch }) => next => async action => {
             headers: { 'Content-Type': 'application/json' }, 
             withCredentials: true
         })
-        dispatch(actions.apiCallSuccess(responce.data));
-        if (onSuccess) dispatch({ type: onSuccess, payload: responce.data });
+        dispatch(actions.apiCallSuccess(responce));
+        if (onSuccess) dispatch({ type: onSuccess, payload: responce });
     }
     catch (error) {
         dispatch(actions.apiCallFailed(error.message));

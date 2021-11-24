@@ -4,19 +4,22 @@ import Login from "../components/Login/Login2";
 import ResetPassword from "../components/resetPassword/ResetPassword";
 import Signup from "../components/Signup/Signup";
 import User from "../components/User/User";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const Train = () => {
     return (
         <div>
-            <Signup />
+
             <Router>
-                <Routes>
-                    <Route path="/Admin" component={Admin} />
-                    <Route path="/User" component={User} />
-                    <Route path="/Signup" component={Signup} />
-                    <Route path="/Login" component={Login} />
-                </Routes>
+
+                <Switch>
+                    <Route path="/" exact> <Login/> </Route>
+                    <Route path="/admin" exact> <Admin/> </Route>
+                    <Route path="/user" exact> <User/> </Route>
+                    <Route path="/signup" exact> <Signup/> </Route>
+                    <Route path="/login" exact> <Login/> </Route>
+                </Switch>
+                
             </Router>
         </div>
     );

@@ -41,19 +41,19 @@ const store = configureStore();
 
 // var cookieRes = undefined
 
-setTimeout(() => axios.post("http://localhost:8080/api/auth/login", {
+// setTimeout(() => axios.post("http://localhost:8080/api/auth/login", {
 
-    email: "mahbod@yahoo.com",
-    password: "12345678"
+//     email: "mahbod@yahoo.com",
+//     password: "12345678"
 
-}, { withCredentials: true }).then((response) => {
-    console.log(response);
-    // const cookieRes = cookies.getAll();
-    // console.log(cookieRes)
-})
-    .catch((error) => {
-        console.log(error);
-    }), 1000)
+// }, { withCredentials: true }).then((response) => {
+//     console.log(response);
+//     // const cookieRes = cookies.getAll();
+//     // console.log(cookieRes)
+// })
+//     .catch((error) => {
+//         console.log(error);
+//     }), 1000)
 
 
 // setTimeout(() => axios.post("http://localhost:8080/api", { headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${cookieRes}` }, withCredentials: true }).then((response) => {
@@ -83,12 +83,12 @@ setTimeout(() => axios.post("http://localhost:8080/api/auth/login", {
 
 setTimeout(() => axios.post("http://localhost:8080/api/admin/tasks", {
     title: "salam",
-    task: "chetori",
+    task: "chetorichetorichetorichetorichetorichetorichetoricherichetorichetori",
     subjectTag: "برنامه نویسی",
     executors: ["amirali"],
-    startDate: "14 November 2022",
-    finishDate: "25 November 2022",
-
+    startDate: "23 November 2022",
+    finishDate: "27 November 2022",
+    assignedBy: "amirali",
 }, { headers: { 'Content-Type': 'application/json'}, withCredentials: true }).then((response) => {
     console.log(response);
 }).catch((responce) => {
